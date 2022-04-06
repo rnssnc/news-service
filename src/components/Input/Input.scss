@@ -1,0 +1,42 @@
+@import 'styles/constants/constants@desktop.scss';
+
+.Input {
+  flex-grow: 1;
+  padding: 4px 0;
+
+  border: none;
+  outline: none;
+  
+  color: var(--color-g-text-primary);
+  font-size: $text-m;
+  
+  background-color: transparent;
+  
+  &-Label {
+    cursor: pointer;
+
+    padding: 4px;
+    border-radius: 4px 4px 0 0;
+
+    display: flex;
+    align-items: center;
+    
+    border-bottom: 1px solid var(--color-g-background-tertiary);
+
+    transition: all .2s ease;
+  }
+
+  &-Label_Focused {
+    border-color: var(--color-g-background-active);
+  }
+
+  &-Label_Focused &-Icon {
+    fill: var(--color-g-background-active);
+    transform: scale(1.1);
+  }
+
+  &-Icon {
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+}

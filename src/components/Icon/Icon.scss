@@ -1,0 +1,10 @@
+.Icon {
+  fill: var(--color-g-background-tertiary);
+  transition: all .3s ease;
+
+  &::after {
+    content: '';
+    background-color: var(--color-g-icon-hover-background);
+    border-radius: 50%;
+  }
+}

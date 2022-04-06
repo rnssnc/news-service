@@ -1,0 +1,38 @@
+.Header {
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--color-g-background-primary);
+  box-shadow: 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%), 0px 2px 4px -1px rgb(0 0 0 / 20%);
+  
+  &-ColumnLeft,
+  &-ColumnRight {
+    display: flex;
+    align-items: center;
+    
+    gap: 20px;
+  }
+
+  &-NavigationSwitcher {
+    padding: 8px;
+    
+    margin-right: 20px;
+  }
+
+  &-Searchbar {
+    background-color: rgba(0,0,0, 4%);
+    
+    width: 150px;
+
+    transition: all .3s ease;
+  }
+
+  &-Searchbar.Input-Label_Focused {
+    width: 220px;
+    
+    background-color: transparent;
+  }
+}

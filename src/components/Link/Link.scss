@@ -1,0 +1,9 @@
+.Link {
+  cursor: pointer;
+  outline: 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  
+  color: var(--color-g-link);
+  text-decoration: none;
+}
