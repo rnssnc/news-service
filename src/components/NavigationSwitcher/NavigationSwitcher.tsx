@@ -1,12 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import { IClassNameProps } from 'utils/core';
 import { cn } from '@bem-react/classname';
 
+import { Button } from 'components/Button/Button';
+
 import './NavigationSwitcher.scss';
 
-export const cnNavigationSwitcher = cn('NavigationSwitcher');
-export const NavigationSwitcherLineCn = cnNavigationSwitcher('Line');
+export const navigationSwitcherCn = cn('NavigationSwitcher');
+export const cnNavigationSwitcherLine = navigationSwitcherCn('Line');
 
 export interface INavigationSwitcherProps extends IClassNameProps {
   initialState?: boolean;
@@ -25,14 +27,19 @@ export const NavigationSwitcher: React.FC<INavigationSwitcherProps> = ({
     onChange(!isChecked);
   }, [isChecked])
 
+  const getLines = useCallback(() => (
+    <>
+      <span className={cnNavigationSwitcherLine} />
+      <span className={cnNavigationSwitcherLine} />
+      <span className={cnNavigationSwitcherLine} />
+    </>
+  ), [])
+
   return (
-    <div 
-      className={cnNavigationSwitcher({ checked: isChecked }, [className])}
+    <Button 
+      className={navigationSwitcherCn({ Checked: isChecked }, [className])}
       onClick={handleClick}
-    >
-      <div className={NavigationSwitcherLineCn} />
-      <div className={NavigationSwitcherLineCn} />
-      <div className={NavigationSwitcherLineCn} />
-    </div>
+      Icon={getLines}
+    />
   );
 };
