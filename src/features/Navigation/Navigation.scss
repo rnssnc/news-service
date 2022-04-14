@@ -1,0 +1,22 @@
+.Navigation {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  z-index: 99999;
+  padding-right: 15px;
+
+  background-color: var(--color-g-background-secondary);
+  
+  transition: all .3s ease;
+  
+  &-Categories {
+    border-top: 1px solid var(--color-g-active-background);
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+
+  &_Hidden {
+    transform: translateX(-100%);
+  }
+}
