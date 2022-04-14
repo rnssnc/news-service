@@ -1,0 +1,60 @@
+.ExchangeRates {
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px;
+  border-radius: 12px;
+
+  background-color: var(--color-g-background-primary); 
+  height: 100%;
+  box-sizing: border-box;
+
+  &-Header {
+    margin-bottom: 10px;
+  }
+
+  &-Valutes {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    gap: 8px;
+  }
+
+  &-Valute {
+    display: flex;
+  }
+
+  &-Name {
+    max-width: 50%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+
+    margin-right: 6px;
+  }
+
+  &-Trend {
+    &_isFalling {
+      color: var(--color-g-green);
+    }
+
+    &_isGrowing {
+      color: var(--color-g-red);
+    }
+  }
+
+  &-Footer {
+    margin-top: 12px;
+  }
+
+  &-Credits {
+    font-size: 12px;
+    color: var(--color-g-text-primary);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
