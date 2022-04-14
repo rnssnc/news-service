@@ -1,0 +1,106 @@
+@import 'styles/constants/constants@desktop.scss';
+
+.ArticleCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-g-background-primary);
+  padding: 16px;
+  border-radius: 12px;
+
+  height: 100%;
+  box-sizing: border-box;
+
+  color: var(--color-g-text-primary);
+
+  &-TextContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-Title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &-Description {
+    font-size: 14px;
+  }
+
+  &-Media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:not(&_Headline) & {
+
+    &-TextContent {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+    }
+
+    &-Media {
+      margin-top: 12px;
+    }
+  }
+  
+  &-Image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+
+    min-height: 172px;
+    max-height: 180px;
+  }
+
+  &-Footer {
+    padding-top: 8px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    
+    font-size: $text-m;
+  }
+
+  &-Source {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &-Domain {
+    text-transform: lowercase;
+  }
+
+  &-Favicon {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-size: contain;
+
+    border-radius: 2px;
+  }
+
+  &_Headline {
+    flex-direction: row;
+    gap: 10px;  
+  }
+
+  &_Headline &-Media {
+    order: -1;
+    width: 50%;  
+  }
+
+  &_Headline &-TextContent {
+    width: 50%;
+  }
+
+  &:hover & {
+    &-Title {
+      color: var(--color-g-link);
+    }
+  }
+}
