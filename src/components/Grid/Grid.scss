@@ -1,0 +1,21 @@
+.Grid {
+  display: flex;
+  flex-wrap: wrap;
+  
+  &-Item {
+    padding: 5px;
+    box-sizing: border-box;
+    
+    &_size {
+      &_s {
+        flex: 0 0 calc(100% / 3);
+        max-width: calc(100% / 3);
+      }
+  
+      &_m {
+        flex: 0 0 calc(200% / 3);
+        max-width: calc(200% / 3);
+      }
+    }
+  }
+}
