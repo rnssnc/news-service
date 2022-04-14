@@ -1,0 +1,31 @@
+.Button {
+  cursor: pointer;
+  min-width: 24px;
+  min-height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: transparent;
+  outline: none;
+  margin: 0;
+  border: none;
+  border-radius: 6px;
+
+  &_Icon {
+    border-radius: 50%;
+  }
+
+  &_WithIcon {
+    gap: 6px;
+  }
+
+  &:hover {
+    background-color: var(--color-g-hover-background);
+  }
+
+  &:active {
+    background-color: var(--color-g-active-background);
+    transform: scale(0.96);
+  }
+} 
