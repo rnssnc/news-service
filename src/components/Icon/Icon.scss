@@ -1,5 +1,7 @@
 .Icon {
   fill: var(--color-g-background-tertiary);
+  stroke: var(--color-g-background-tertiary);
+
   transition: all .3s ease;
 
   &::after {

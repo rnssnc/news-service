@@ -14,7 +14,7 @@ export enum ICON_SIZES {
 }
 
 export interface IIconProps extends IClassNameProps {
-  Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement> & { title?: string }>;
+  Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement> & { title?: string }> | React.FunctionComponent;
   size: keyof typeof ICON_SIZES;
 }
 

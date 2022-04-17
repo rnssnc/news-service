@@ -1,6 +1,3 @@
-import { logout } from '../redux/actions/actions';
-import store from '../store';
-
 export type TCategory = {
   _id: number;
   title: string;
@@ -44,7 +41,7 @@ export type TWordToAdd = {
 };
 
 function checkAuthReponse(response: Response) {
-  if (response.status === 401) store.dispatch(logout());
+  if (response.status === 401) console.log('LOGOUT')
 }
 
 export default class EnglishForKidsService {

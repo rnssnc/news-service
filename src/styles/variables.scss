@@ -1,12 +1,15 @@
 :root {
-  --color-g-background-primary: #fafafa;
+  --color-g-background-primary: #fefefe;
   --color-g-background-secondary: #eceef2;
   --color-g-background-tertiary: #333333;
 
-  --color-g-icon-hover-background: rgba(60,64,67,0.04);
+  --color-g-hover-background: rgba(0,0,0, 4%);
+  --color-g-active-background: rgba(0,0,0, 8%);
   --color-g-text-primary: #333333;
 
-  --color-g-background-active: #FFBA08;
+  --color-g-background-active: #ffce3f;
+  --color-g-red: #ea3281;
+  --color-g-green: green;
 
   
   --color-g-link: #1a73e8;
@@ -15,7 +18,6 @@
 
   --nav-link-color-primary: #fafafa;
   --text-color-primary-light: #fafafa;
-  --gradient-color-primary: #e71669;
   --gradient-color-secondary: #661bac;
   --app-background-color: #d6d6d6;
   --app-mode-switch-background-color: #661bac;
@@ -25,8 +27,7 @@
 }
 
 [data-theme='dark'] {
-  --color-g-icon-hover-background: rgba(232,234,237,0.08);
-
+  --color-g-hover-background: rgba(232,234,237,0.08);
 
   --color-g-background-primary: #333333;
   --color-text-primary: #fafafa;

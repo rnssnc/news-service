@@ -1,0 +1,17 @@
+.Category {
+  &-Header {
+    position: relative;
+    overflow: hidden;
+    padding-left: 20px;
+  
+    &:after {
+      position: absolute;
+      content: "";
+      background: linear-gradient(to right, var(--color-g-text-primary), transparent 50%);
+      height: 1px;
+      width: 100%;
+      top: 50%;
+      margin-left: 10px;
+    }
+  }
+}

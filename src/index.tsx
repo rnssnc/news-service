@@ -4,15 +4,13 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { App } from './App/App';
-import store from './store';
+import { store } from 'redux/store';
 import { ErrorBoundary } from 'components/ErrorBoundry/ErrorBoundry';
-import { NewsService, NewsServiceProvider } from 'services/NewsService/';
 
 import 'styles/variables.scss';
 import 'styles/global.scss';
 import 'normalize.css';
 
-const newsService = new NewsService();
 
 ReactDOM.render(
   <Provider store={store}>
@@ -24,11 +22,7 @@ ReactDOM.render(
         </div>
       )}
     >
-      <NewsServiceProvider value={newsService}>
-        <Router>
-          <App />
-        </Router>
-      </NewsServiceProvider>
+      <App />
     </ErrorBoundary>
   </Provider>,
   document.getElementById('root'),

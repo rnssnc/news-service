@@ -1,4 +1,4 @@
 import NewsService from './NewsService';
-import { NewsServiceProvider, NewsServiceConsumer } from './NewsServiceContext/NewsServiceContext';
+import { NewsServiceContext } from './NewsServiceContext/NewsServiceContext';
 
-export { NewsService, NewsServiceProvider, NewsServiceConsumer };
+export { NewsService, NewsServiceContext };

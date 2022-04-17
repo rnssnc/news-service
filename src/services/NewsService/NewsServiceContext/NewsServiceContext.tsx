@@ -1,5 +1,3 @@
 import React from 'react';
 
-const { Provider: NewsServiceProvider, Consumer: NewsServiceConsumer } = React.createContext({});
-
-export { NewsServiceProvider, NewsServiceConsumer };
+export const NewsServiceContext = React.createContext({});
