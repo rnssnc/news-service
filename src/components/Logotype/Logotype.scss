@@ -32,3 +32,11 @@
     transform: translate(0, -4px);
   }
 }
+
+@media screen and (max-width: 620px) {
+  .Logotype {
+    &-Text {
+      display: none;
+    }
+  }
+}

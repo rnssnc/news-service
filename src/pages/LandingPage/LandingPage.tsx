@@ -6,9 +6,12 @@ import { useAppDispatch, useAppSelector } from "redux/hooks";
 
 import { Category } from "features/Category/Category";
 
-import './Landing.scss';
 import { ArticleCard } from "components/ArticleCard/ArticleCard";
 import { ExchangeRates } from "components/ExchangeRates/ExchangeRates";
+
+import './LandingPage.scss';
+import { TCategory } from "services/NewsService/NewsService";
+import { useParams, useSearchParams } from 'react-router-dom';
 
 const landinPageCn = cn('LandingPage');
 const cnLandingPage = landinPageCn();
@@ -36,7 +39,6 @@ export const LandingPage: React.FC = () => {
     dispatch(getExchangeRates())
   })
 
-  console.log(articles)
   return (
     <div className={cnLandingPage}>
       <Category 
@@ -46,27 +48,24 @@ export const LandingPage: React.FC = () => {
         { valute && <ExchangeRates Valute={valute}/>}
         { articles.general && articles.general.reduce((acc: JSX.Element[], article, index) => {
           if (index > 0 && index < 4) {
-           acc.push(<ArticleCard article={article} key={article.url} isHeadline={index === 0} />);
+           acc.push(<ArticleCard article={article} key={article.url} />);
           }
 
           return acc;
         }, [])}
       </Category>
-      <Category 
-        category={'sports'}
-      >
-        { articles.sports && articles.sports.map((article, index) => <ArticleCard article={article} key={article.url} isHeadline={index === 0} />)}
-      </Category>
-      <Category 
-        category={'science'}
-      >
-        { articles.science && articles.science.map((article, index) => <ArticleCard article={article} key={article.url} isHeadline={index === 0} />)}
-      </Category>
-      <Category 
-        category={'technology'}
-      >
-        { articles.technology && articles.technology.map((article, index) => <ArticleCard article={article} key={article.url} isHeadline={index === 0} />)}
-      </Category>
+      { Object.keys(articles).map((category: string) => {
+        if (category === 'general') {
+          return;
+        }
+
+        return (
+          <Category category={category as TCategory} key={category}>
+            { articles[category as TCategory]?.map((article, index) => <ArticleCard article={article} key={article.url} isHeadline={index === 0} />)}
+          </Category>
+        )
+      })
+      }
     </div>
   )
 };

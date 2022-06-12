@@ -1,9 +1,19 @@
+@import '../styles/constants/constants@desktop.scss';
+
 .App {
-  max-width: 1024px;
-  margin: auto;
-  margin-top: 85px;
+  font-family: $font-regular;
+  
+  background-color: var(--color-g-background-secondary);
+  color: var(--color-g-text-primary);
+
+  .Main {
+    max-width: 1024px;
+    margin: auto;
+    margin-top: 65px;
+  }
 }
 
-h3 {
+h3,
+h2 {
   margin: 0;
 }

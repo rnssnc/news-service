@@ -1,0 +1,64 @@
+@import 'styles/constants/constants@desktop.scss';
+
+.FeedCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-g-background-primary);
+  padding: 16px;
+  border-radius: 12px;
+
+  height: 100%;
+  box-sizing: border-box;
+
+  color: var(--color-g-text-primary);
+
+  &-Media {
+    position: relative;
+  }
+
+  &-Source {
+    position: absolute;
+    right: 0;
+
+    padding: 4px 8px;
+    text-transform: lowercase;
+
+    background-color: rgba(255, 206, 63, .5);
+    border-radius: 0 0 0 4px;
+
+    color: var(--color-g-text-inversed);
+  }
+
+  &-Image {
+    object-fit: cover;
+    object-position: left center;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+
+    min-height: 180px;
+    max-height: 320px;
+  }
+
+  &-Title {
+    margin-bottom: 10px;
+  }
+
+  &-Footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 6px;
+  }
+
+  &-Feedback {
+    display: flex;
+  }
+
+  &:hover & {
+    &-Title {
+      color: var(--color-g-link);
+    }
+  }
+}

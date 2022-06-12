@@ -10,6 +10,7 @@ export interface IArticle {
     urlToImage: string | null,
     publishedAt: string,
     content: string | null,
+    category: TCategory,
 }
 
 export interface INewsApiResponse {
@@ -25,18 +26,24 @@ function checkAuthReponse(response: Response) {
 }
 
 export default class NewsService {
-  private readonly BASE_URL = 'https://saurav.tech/NewsAPI/';
-  private readonly top_headlines_api = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=54a679edafc74c43ab2b7370321ad562"
-  private readonly everything_api = "<BASE_URL>/everything/<source_id>.json"
+  static readonly BASE_URL = 'http://localhost:80';
+  static readonly AUTH_URL = 'http://localhost:80/auth/google';
   
   static async getHeadlines({
     category,
     page,
     pageSize,
   }: { category?: TCategory, page?: number, pageSize?: number }) {
-      return fetch(`http://localhost:80/articles?_limit=${pageSize ? pageSize : 5}&_category=${category ? category : 'general'}&_page=${page}`).then(response => response.json());
+      return fetch(`${this.BASE_URL}/articles?_limit=${pageSize ? pageSize : 5}&_category=${category ? category : 'general'}&_page=${page}`).then(response => response.json());
   };
+
+  static async login(code: string) {
+    return fetch(`${this.BASE_URL}/auth/google/callback${code}`)
+  }
   
+  static async getUserData() {
+    return fetch(`${this.BASE_URL}/success`).then(response => response.json());
+  }
   // defaultURL = 'http://localhost:80';
 
   // async login(login: string, password: string) {

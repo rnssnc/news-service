@@ -19,3 +19,17 @@
     }
   }
 }
+
+@media screen and (max-width: 720px) {
+  .Grid {
+    &-Item {
+      &_size {
+        &_s,
+        &_m {
+          flex: auto;
+          max-width: none;
+        }
+      }
+    }
+  }
+}

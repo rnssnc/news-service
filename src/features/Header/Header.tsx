@@ -16,13 +16,20 @@ import './Header.scss';
 import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import { setNavVisibility } from 'redux/app';
 
+export interface IHeaderProps {
+  onAuthClick: React.MouseEventHandler;
+}
+
 export const headerCn = cn('Header');
 export const cnHeader = headerCn();
 export const cnHeaderColumn = headerCn('Column');
 export const cnHeaderNavigationSwitcher = headerCn('NavigationSwitcher');
 export const cnHeaderSearchBar = headerCn('Searchbar');
+export const cnHeaderTime = headerCn('Time');
 
-export const Header: React.FC = () => {
+export const Header: React.FC<IHeaderProps> = ({
+  onAuthClick,
+}) => {
   const isNavVisible = useAppSelector(state => state.app.isNavVisible);
   const dispatch = useAppDispatch();
 
@@ -39,7 +46,7 @@ export const Header: React.FC = () => {
         <Logotype />
       </div>
       <div className={cnHeaderColumn}>
-        <Time />
+        <Time className={cnHeaderTime} />
         <Input 
           className={cnHeaderSearchBar}
           InputIcon={SearchIcon}
@@ -52,6 +59,7 @@ export const Header: React.FC = () => {
         />
         <Button
           Icon={UserIcon}
+          onClick={onAuthClick}
         >
           Войти
         </Button>

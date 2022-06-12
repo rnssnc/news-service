@@ -1,10 +1,11 @@
 import { cn } from "@bem-react/classname";
 import { Link } from "components/Link/Link";
-import React, { useCallback, useMemo, useState } from "react"
+import React, { useMemo, useState } from "react"
 
 import { IArticle } from "services/NewsService/NewsService";
 import { IClassNameProps } from "utils/core";
 import { getFaviconURL } from "utils/helpers/getFaviconURL";
+import { isToday } from "utils/helpers/isToday";
 
 import './ArticleCard.scss';
 
@@ -35,17 +36,6 @@ export const ArticleCard: React.FC<IArticleCardProps> = ({
   const [imgLoadingError, setImgLoadingError] = useState(false);
   const publishedDate = useMemo(() => new Date(article.publishedAt), [article.publishedAt]);
 
-  const isDateToday = useCallback((date: Date) => {
-    const otherDate = new Date(date);
-    const todayDate = new Date();
-
-    return (
-      otherDate.getDate() === todayDate.getDate() &&
-      otherDate.getMonth() === todayDate.getMonth() &&
-      otherDate.getFullYear() === todayDate.getFullYear()
-    );
-  }, []);
-
   const footer = (
     <div className={cnArticleCardFooter}>
       <div className={cnArticleCardSource}>
@@ -55,7 +45,7 @@ export const ArticleCard: React.FC<IArticleCardProps> = ({
         </span>
       </div>
       <div className={cnArticleCardDate}>{
-        isDateToday(publishedDate) ?
+        isToday(publishedDate) ?
           `Сегодня, ${publishedDate.getHours() < 10 ? `0${publishedDate.getHours()}` : publishedDate.getHours()}:${publishedDate.getMinutes() < 10 ? `0${publishedDate.getMinutes()}` : publishedDate.getMinutes()}` :
           publishedDate.toLocaleDateString(undefined)
       }</div>

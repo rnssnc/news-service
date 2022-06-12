@@ -6,7 +6,6 @@
     "@bem-react/classname": "^1.5.12",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.5.0",
     "@redux-devtools/extension": "^3.2.2",
     "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^4.2.4",

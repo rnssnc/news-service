@@ -9,7 +9,7 @@ import { Icon as IconComponent, IIconProps } from "components/Icon/Icon";
 const buttonCn = cn('Button');
 
 export interface IButtonProps extends IClassNameProps, Partial<IIconProps> {
-  onClick?(): void;
+  onClick?(e: React.MouseEvent): void;
 }
 
 export const Button: React.FC<IButtonProps> = ({

@@ -4,9 +4,9 @@
   left: 0;
   z-index: 99999;
   padding-right: 15px;
+  padding-top: 15px;
 
-  background-color: var(--color-g-background-secondary);
-  
+  background-color: var(--color-nav-background);
   transition: all .3s ease;
   
   &-Categories {
@@ -18,5 +18,11 @@
 
   &_Hidden {
     transform: translateX(-100%);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .Navigation {
+    width: 100%;
   }
 }

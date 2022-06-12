@@ -8,6 +8,7 @@ import { IArticle, TCategory } from 'services/NewsService/NewsService';
 // Define a type for the slice state
 interface CounterState {
   isNavVisible: boolean;
+  isLoginModalVisible: boolean;
   exchangeRates?: IExchangeRates;  
   articles: Partial<Record<TCategory, IArticle[]>>;
 }
@@ -15,6 +16,7 @@ interface CounterState {
 // Define the initial state using that type
 const initialState: CounterState = {
   isNavVisible: false,
+  isLoginModalVisible: false,
   articles: {},
   exchangeRates: undefined,
 }
@@ -40,6 +42,9 @@ export const appSlice = createSlice({
   reducers: {
     setNavVisibility: (state, action: PayloadAction<boolean>) => {
       state.isNavVisible = action.payload
+    },
+    setLoginModalVisibility: (state, action: PayloadAction<boolean>) => {
+      state.isNavVisible = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -56,7 +61,7 @@ export const appSlice = createSlice({
   },
 })
 
-export const { setNavVisibility } = appSlice.actions;
+export const { setNavVisibility, setLoginModalVisibility } = appSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectNavVisibility = (state: RootState) => state.app.isNavVisible;
