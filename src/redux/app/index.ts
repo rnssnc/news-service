@@ -5,8 +5,7 @@ import { IExchangeRates } from 'services/CBRService/CBRService';
 import { NewsService } from 'services/NewsService';
 import { IArticle, IUser, TCategory } from 'services/NewsService/NewsService';
 
-// Define a type for the slice state
-interface CounterState {
+interface AppState {
   isNavVisible: boolean;
   isLoginModalVisible: boolean;
   exchangeRates?: IExchangeRates;  
@@ -15,7 +14,7 @@ interface CounterState {
 }
 
 // Начальное состояние хранилища
-const initialState: CounterState = {
+const initialState: AppState = {
   isNavVisible: false,
   isLoginModalVisible: false,
   articles: {},
