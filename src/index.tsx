@@ -8,7 +8,7 @@ ReactDOM.render(
     <ErrorBoundary
       fallbackRender={({ error }) => (
         <div role="alert">
-          <div>Ошибка</div>
+          <div>Ошибка:</div>
           <pre>{error.message}</pre>
         </div>
       )}

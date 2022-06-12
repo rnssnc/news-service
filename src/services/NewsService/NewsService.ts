@@ -13,6 +13,23 @@ export interface IArticle {
     category: TCategory,
 }
 
+export interface IUserEmail {
+  value: string,
+  verified: boolean,
+}
+export interface IUser {
+  displayName: string,
+  emails: IUserEmail[],
+  id: string,
+  name: {
+    givenName: string,
+  },
+  photos: {
+    value: string
+  }[],
+  provider: 'google',
+}
+
 export interface INewsApiResponse {
   status: 'ok' | 'error',
   totalResults: number,
@@ -38,10 +55,12 @@ export default class NewsService {
   };
 
   static async login(code: string) {
+    console.log(code);
     return fetch(`${this.BASE_URL}/auth/google/callback${code}`)
+      .then(() => this.getUserData())
   }
   
-  static async getUserData() {
+  private static  async getUserData() {
     return fetch(`${this.BASE_URL}/success`).then(response => response.json());
   }
   // defaultURL = 'http://localhost:80';

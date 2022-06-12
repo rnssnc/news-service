@@ -3,21 +3,23 @@ import type { RootState } from 'redux/store'
 import { CBRService } from 'services/CBRService';
 import { IExchangeRates } from 'services/CBRService/CBRService';
 import { NewsService } from 'services/NewsService';
-import { IArticle, TCategory } from 'services/NewsService/NewsService';
+import { IArticle, IUser, TCategory } from 'services/NewsService/NewsService';
 
 // Define a type for the slice state
 interface CounterState {
   isNavVisible: boolean;
   isLoginModalVisible: boolean;
   exchangeRates?: IExchangeRates;  
+  user?: IUser,
   articles: Partial<Record<TCategory, IArticle[]>>;
 }
 
-// Define the initial state using that type
+// Начальное состояние хранилища
 const initialState: CounterState = {
   isNavVisible: false,
   isLoginModalVisible: false,
   articles: {},
+  user: undefined,
   exchangeRates: undefined,
 }
 
@@ -36,15 +38,22 @@ export const getExchangeRates = createAsyncThunk('app/getCurrentExchangeRates', 
   return response;
 })
 
+export const login = createAsyncThunk('app/login', async (hash: string) => {
+  const response = await NewsService.login(hash);
+
+  return response;
+})
+
+
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
     setNavVisibility: (state, action: PayloadAction<boolean>) => {
-      state.isNavVisible = action.payload
+      state.isNavVisible = action.payload;
     },
-    setLoginModalVisibility: (state, action: PayloadAction<boolean>) => {
-      state.isNavVisible = action.payload
+    logout: (state) => {
+      state.user = undefined;
     }
   },
   extraReducers: (builder) => {
@@ -58,10 +67,13 @@ export const appSlice = createSlice({
       .addCase(getExchangeRates.fulfilled, (state, action: PayloadAction<IExchangeRates>) => {
         state.exchangeRates = action.payload;
       })
+      .addCase(login.fulfilled, (state, action: PayloadAction<IUser>) => {
+        state.user = action.payload;
+      })
   },
 })
 
-export const { setNavVisibility, setLoginModalVisibility } = appSlice.actions;
+export const { setNavVisibility, logout } = appSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectNavVisibility = (state: RootState) => state.app.isNavVisible;

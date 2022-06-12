@@ -14,11 +14,9 @@ import { ReactComponent as UserIcon } from './Header.assets/user.svg';
 
 import './Header.scss';
 import { useAppSelector, useAppDispatch } from 'redux/hooks';
-import { setNavVisibility } from 'redux/app';
-
-export interface IHeaderProps {
-  onAuthClick: React.MouseEventHandler;
-}
+import { login, logout, setNavVisibility } from 'redux/app';
+import { openSignInWindow } from 'utils/helpers/OpenPopup';
+import { NewsService } from 'services/NewsService';
 
 export const headerCn = cn('Header');
 export const cnHeader = headerCn();
@@ -27,13 +25,23 @@ export const cnHeaderNavigationSwitcher = headerCn('NavigationSwitcher');
 export const cnHeaderSearchBar = headerCn('Searchbar');
 export const cnHeaderTime = headerCn('Time');
 
-export const Header: React.FC<IHeaderProps> = ({
-  onAuthClick,
-}) => {
+export const Header: React.FC = () => {
   const isNavVisible = useAppSelector(state => state.app.isNavVisible);
+  const user = useAppSelector(state => state.app.user);
   const dispatch = useAppDispatch();
 
+  const handleLogin = useCallback((e: MessageEvent) => {
+    // Проверяем совпадают ли домены, 
+    // т.к не управляем поведением пользователя в другом окне
+    if (e.origin !== window.location.origin) {
+      return;
+    }
+
+    dispatch(login(e.data));
+   }, [dispatch])
+
   const handleNavSwitcherChange = useCallback((isChecked) => dispatch(setNavVisibility(isChecked)), [dispatch])
+  const handleLogoutClick = useCallback(() => dispatch(logout()), [dispatch])
 
   return (
     <header className={cnHeader}>
@@ -58,10 +66,10 @@ export const Header: React.FC<IHeaderProps> = ({
           Icon={NotificationIcon}     
         />
         <Button
-          Icon={UserIcon}
-          onClick={onAuthClick}
+          Icon={user ? user.photos[0].value : UserIcon}
+          onClick={user ? handleLogoutClick : () => openSignInWindow(NewsService.AUTH_URL, 'Auth Window', handleLogin)}
         >
-          Войти
+          { user ? user.displayName : 'Войти' }
         </Button>
       </div>
     </header>
